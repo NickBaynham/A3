@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="TestNg Example">
+
+    <test name="Smoke tests" preserve-order="false">
+        <classes>
+            <class name="LoginTests">
+            <methods>
+                <include name="loginSuccess" />
+            </methods>
+            </class>
+            <class name="signUpTests">
+                <methods>
+                    <include name="SignUpSuccess" />
+                </methods>
+            </class>
+            <class name="checkoutTest">
+                <methods>
+                    <include name="checkoutSuccess" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

@@ -2,6 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -38,28 +39,33 @@ public class LoginTests extends  BaseTest {
     }
 
     public void clickToLoginButton(){
-        WebElement login_button = driver.findElement(By.cssSelector("[data-testid=\"loginSubmit\"]"));
+//        WebElement login_button = driver.findElement(By.cssSelector("[data-testid=\"loginSubmit\"]"));
+        WebElement login_button = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[data-testid=\"loginSubmit\"]")));
         login_button.click();
     }
 
     public void setEmailField(String email){
-        WebElement emailField = driver.findElement(By.cssSelector("#email"));
+//        WebElement emailField = driver.findElement(By.cssSelector("#email"));
+        WebElement emailField = findElement("#email");
         emailField.sendKeys(email);
     }
 
     public void setPasswordField(String password){
-        WebElement passwordField = driver.findElement(By.cssSelector("#password"));
+//        WebElement passwordField = driver.findElement(By.cssSelector("#password"));
+        WebElement passwordField = findElement("#password");
         passwordField.sendKeys(password);
     }
 
     public String getErrorMessage() {
-        WebElement uiErrorMessage = findElement(".ui.error.message p"); //driver.findElement(By.cssSelector(".ui.error.message p"));
+//        WebElement uiErrorMessage = findElement(".ui.error.message p"); //driver.findElement(By.cssSelector(".ui.error.message p"));
+        WebElement uiErrorMessage = findElement(".ui.error.message p");
         String errorMessagetext = uiErrorMessage.getText();
         return errorMessagetext;
     }
 
     public WebElement findElement(String cssLocator) {
-        return driver.findElement(By.cssSelector(cssLocator));
+//        return driver.findElement(By.cssSelector(cssLocator));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(cssLocator)));
     }
 
 
